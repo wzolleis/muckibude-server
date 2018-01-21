@@ -7,6 +7,7 @@ import javax.sql.DataSource
 
 class ApplicationInitializer(val dataSource: DataSource) : ApplicationListener<ApplicationReadyEvent> {
     override fun onApplicationEvent(event: ApplicationReadyEvent?) {
+        println("---> connect to database")
         Database.connect(dataSource)
 
     }

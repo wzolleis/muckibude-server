@@ -17,7 +17,15 @@ class AppConfig {
     @Primary
     @ConfigurationProperties(prefix = "spring.datasource")
     fun dataSource(): DataSource {
-        var dataSource = DataSourceBuilder.create().build()
+        val dbUrl = System.getenv("JDBC_DATABASE_URL")
+        val username = System.getenv("JDBC_DATABASE_USERNAME")
+        val password = System.getenv("JDBC_DATABASE_PASSWORD")
+        println("----> dbUrl = $dbUrl")
+        var dataSource = DataSourceBuilder.create()
+                .username(username)
+                .password(password)
+                .url(dbUrl)
+                .build()
         return dataSource
     }
 
