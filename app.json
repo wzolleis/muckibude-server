@@ -1,0 +1,5 @@
+{
+  "name": "Muckibude-Server",
+  "description": "Liefert die Daten fuer das Training in der Muckibude",
+  "addons": [ "heroku-postgresql" ]
+}
