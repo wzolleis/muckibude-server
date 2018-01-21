@@ -25,6 +25,7 @@ class AppConfig {
                 .username(username)
                 .password(password)
                 .url(dbUrl)
+                .driverClassName("org.postgresql.Driver")
                 .build()
         return dataSource
     }
