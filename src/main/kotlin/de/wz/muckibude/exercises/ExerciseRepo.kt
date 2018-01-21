@@ -9,6 +9,7 @@ class ExerciseRepo() {
             // DSL/DAO operations go here
             val ex1 = Exercise("1", "A")
             val ex2 = Exercise("2", "B")
+            println("default daten")
             setOf(ex1, ex2)
         }
     }
