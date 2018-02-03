@@ -9,7 +9,6 @@ class ApplicationInitializer(private val dataSource: DataSource)  {
         val flyway = Flyway();
 
         flyway.dataSource = dataSource;
-        flyway.clean()
         flyway.migrate()
         Database.connect(dataSource)
 
