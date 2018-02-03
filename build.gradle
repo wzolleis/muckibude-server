@@ -28,6 +28,12 @@ jar {
     }
 }
 
+shadowJar {
+    baseName = 'muckibude-all'
+    classifier = null
+    version = null
+}
+
 task stage(dependsOn: ['build', 'clean'])
 build.mustRunAfter clean
 
