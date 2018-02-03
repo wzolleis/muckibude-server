@@ -28,11 +28,6 @@ class ExerciseRepo() {
             println("default daten")
             setOf(ex1, ex2)
         }
-
-        fun insert(exercise : Exercise) {
-
-        }
-
     }
 
 }

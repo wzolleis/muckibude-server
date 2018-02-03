@@ -1,1 +1,1 @@
-web: java -jar build/libs/muckibude-server-1.0.jar
+web: java -jar build/libs/muckibude-server-all.jar

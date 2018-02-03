@@ -1,13 +1,16 @@
 package de.wz.muckibude
 
+import org.flywaydb.core.Flyway
 import org.jetbrains.exposed.sql.Database
-import org.springframework.boot.context.event.ApplicationReadyEvent
-import org.springframework.context.ApplicationListener
 import javax.sql.DataSource
 
-class ApplicationInitializer(val dataSource: DataSource) : ApplicationListener<ApplicationReadyEvent> {
-    override fun onApplicationEvent(event: ApplicationReadyEvent?) {
-        println("---> connect to database")
+class ApplicationInitializer(private val dataSource: DataSource)  {
+    fun initDatabase() {
+        val flyway = Flyway();
+
+        flyway.dataSource = dataSource;
+        flyway.clean()
+        flyway.migrate()
         Database.connect(dataSource)
 
     }

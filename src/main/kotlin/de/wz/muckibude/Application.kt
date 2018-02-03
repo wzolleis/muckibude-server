@@ -1,15 +1,10 @@
 package de.wz.muckibude
 
-import org.jetbrains.exposed.sql.Database
-import org.springframework.boot.SpringApplication
-import org.springframework.boot.autoconfigure.SpringBootApplication
+import io.javalin.Javalin
+fun main(args: Array<String>) {
+    AppConfig.applicationInitializer().initDatabase()
 
-@SpringBootApplication
-class Application {
-    companion object {
-        @JvmStatic fun main(args: Array<String>) {
-            SpringApplication.run(Application::class.java, *args)
-
-        }
-    }
+    val port = System.getenv("PORT").toInt()
+    val app = Javalin.start(port)
+    app.get("/") { ctx -> ctx.result("Hello World") }
 }
