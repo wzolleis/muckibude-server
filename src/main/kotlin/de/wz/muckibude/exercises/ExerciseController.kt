@@ -1,8 +1,10 @@
-package de.wz.muckibude.exercises;
+package de.wz.muckibude.exercises
 
-class ExerciseController(val findExerciseUseCase: FindExerciseUseCase) {
+import io.javalin.Context
 
-    fun findAll(): Set<Exercise> {
-        return findExerciseUseCase.findAll()
+class ExerciseController(private val exerciseService: ExerciseService) {
+    fun findAll(ctx: Context) {
+        val exercises = exerciseService.findAll()
+        ctx.json(exercises)
     }
 }

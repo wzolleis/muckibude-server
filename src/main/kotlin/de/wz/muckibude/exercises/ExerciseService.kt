@@ -1,9 +1,9 @@
 package de.wz.muckibude.exercises;
 
 
-class FindExerciseUseCase(val repo : ExerciseRepo) {
+class ExerciseService(val repo : ExerciseRepo) {
     fun findById(id : String) : Exercise {
-        return Exercise(id, "Bankdrücken")
+        return repo.findById(id)
     }
 
     fun findAll() : Set<Exercise> {

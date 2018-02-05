@@ -1,9 +1,6 @@
 package de.wz.muckibude.exercises;
 
-import org.jetbrains.exposed.sql.Column
-import org.jetbrains.exposed.sql.Query
-import org.jetbrains.exposed.sql.Table
-import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class ExerciseRepo() {
@@ -15,18 +12,32 @@ class ExerciseRepo() {
         val beschreibung: Column<String> = varchar("beschreibung", 1024)
     }
 
+    object ExcerciseAssembler {
+        fun assemble(it: ResultRow): Exercise {
+            return Exercise(it[ExerciseTable.id],
+                    it[ExerciseTable.name],
+                    it[ExerciseTable.geraet],
+                    it[ExerciseTable.muskelgruppe]
+            )
+        }
+    }
+
 
     fun findAll(): Set<Exercise> {
         return transaction {
             // DSL/DAO operations go here
-            val query: Query = ExerciseTable.selectAll()
-            query.forEach { println(it) }
+            ExerciseTable.selectAll()
+                    .map { ExcerciseAssembler.assemble(it) }
+                    .toSet()
+        }
+    }
 
-
-            val ex1 = Exercise("1", "A")
-            val ex2 = Exercise("2", "B")
-            println("default daten")
-            setOf(ex1, ex2)
+    fun findById(id: String): Exercise {
+        return transaction {
+            logger.addLogger(StdOutSqlLogger)
+            ExerciseTable.select({ ExerciseTable.id eq id })
+                    .map { ExcerciseAssembler.assemble(it) }
+                    .first()
         }
     }
 
