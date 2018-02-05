@@ -14,12 +14,12 @@ class ExerciseRepo() {
 
     object ExcerciseAssembler {
         fun assemble(it: ResultRow): Exercise {
-            return Exercise(it[ExerciseTable.id],
-                    it[ExerciseTable.name],
-                    it[ExerciseTable.geraet],
-                    it[ExerciseTable.muskelgruppe],
-                    it[ExerciseTable.beschreibung]
-            )
+            return exercise {
+                name = it[ExerciseTable.name]
+                id = it[ExerciseTable.id]
+                muskelGruppe = it[ExerciseTable.muskelgruppe]
+                beschreibung = it[ExerciseTable.beschreibung]
+            }
         }
     }
 
