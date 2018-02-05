@@ -17,7 +17,8 @@ class ExerciseRepo() {
             return Exercise(it[ExerciseTable.id],
                     it[ExerciseTable.name],
                     it[ExerciseTable.geraet],
-                    it[ExerciseTable.muskelgruppe]
+                    it[ExerciseTable.muskelgruppe],
+                    it[ExerciseTable.beschreibung]
             )
         }
     }
