@@ -10,16 +10,22 @@ class ExerciseTest {
     fun testUebungBuilder() {
 
         val uebung = exercise {
-            muskelGruppe = "Brust"
             id = "2"
             name = "Bankdrücken"
-            geraet = "6"
-
+            muskelGruppe {
+                name = "Brust"
+            }
+            geraet {
+                nummer = "6"
+            }
         }
 
+
         println("uebung ${uebung}")
-        assertThat(uebung.muskelGruppe).isEqualTo("Brust")
-        assertThat(uebung.geraet).isEqualTo("6")
+        assertThat(uebung.muskelGruppe).isNotNull()
+        assertThat(uebung.muskelGruppe.name).isEqualTo("Brust")
+        assertThat(uebung.geraet).isNotNull()
+        assertThat(uebung.geraet.nummer).isEqualTo("6")
         assertThat(uebung.id).isEqualTo("2")
         assertThat(uebung.name).isEqualTo("Bankdrücken")
     }

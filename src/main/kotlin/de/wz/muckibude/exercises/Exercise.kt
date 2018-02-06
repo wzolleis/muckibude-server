@@ -1,18 +1,11 @@
 package de.wz.muckibude.exercises
 
-
-fun exercise(init: Exercise.() -> Unit): Exercise {
-    val Exercise = Exercise()
-    Exercise.init()
-    return Exercise
-}
-
 @Suppress("unused")
 class Exercise() {
     lateinit var id  : String
     lateinit var name : String
-    lateinit var muskelGruppe: String
-    lateinit var geraet : String
+    lateinit var muskelGruppe: Muskelgruppe
+    lateinit var geraet : Geraet
     lateinit var beschreibung: String
 
 
@@ -26,12 +19,14 @@ class Exercise() {
         return this
     }
 
-    fun geraet(init: String.() -> Unit) : Exercise {
+    fun geraet(init: Geraet.() -> Unit) : Exercise {
+        this.geraet = Geraet()
         this.geraet.init()
         return this
     }
 
-    fun muskelGruppe(init: String.() -> Unit) : Exercise {
+    fun muskelGruppe(init: Muskelgruppe.() -> Unit) : Exercise {
+        this.muskelGruppe = Muskelgruppe()
         this.muskelGruppe.init()
         return this
     }
@@ -46,4 +41,10 @@ class Exercise() {
     }
 
 
+}
+
+fun exercise(init: Exercise.() -> Unit): Exercise {
+    val Exercise = Exercise()
+    Exercise.init()
+    return Exercise
 }

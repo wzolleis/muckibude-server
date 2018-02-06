@@ -44,9 +44,9 @@ class AppConfig {
 
     object Env {
         fun serverPort() : Int = System.getenv("PORT").toInt()
-        fun dbUrl() : String = System.getenv("JDBC_DATABASE_URL")
-        fun userName() : String = System.getenv("JDBC_DATABASE_USERNAME")
-        fun password() : String = System.getenv("JDBC_DATABASE_PASSWORD")
+        fun dbUrl() : String = System.getenv("DATABASE_URL")
+        fun userName() : String = System.getenv("DATABASE_USER")
+        fun password() : String = System.getenv("DATABASE_PASSWORD")
     }
 
 
