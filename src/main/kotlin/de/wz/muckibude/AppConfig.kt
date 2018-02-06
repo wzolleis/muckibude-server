@@ -3,9 +3,7 @@ package de.wz.muckibude
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import de.wz.muckibude.AppConfig.Env.dbUrl
-import de.wz.muckibude.AppConfig.Env.password
 import de.wz.muckibude.AppConfig.Env.serverPort
-import de.wz.muckibude.AppConfig.Env.userName
 import de.wz.muckibude.exercises.ExerciseController
 import de.wz.muckibude.exercises.ExerciseRepo
 import de.wz.muckibude.exercises.ExerciseService
@@ -18,15 +16,10 @@ class AppConfig {
 
         fun dataSource(): DataSource {
             val dbUrl = dbUrl()
-            val username = userName()
-            val password = password()
-
             val config = HikariConfig()
             config.jdbcUrl = dbUrl
             config.minimumIdle = 3
             config.maximumPoolSize = 10
-            config.username = username
-            config.password = password
 
             return HikariDataSource(config)
         }
@@ -44,9 +37,7 @@ class AppConfig {
 
     object Env {
         fun serverPort() : Int = System.getenv("PORT").toInt()
-        fun dbUrl() : String = System.getenv("DATABASE_URL")
-        fun userName() : String = System.getenv("DATABASE_USER")
-        fun password() : String = System.getenv("DATABASE_PASSWORD")
+        fun dbUrl() : String = System.getenv("JDBC_DATABASE_URL")
     }
 
 
