@@ -7,4 +7,8 @@ class ExerciseController(private val exerciseService: ExerciseService) {
         val exercises = exerciseService.findAll()
         ctx.json(exercises)
     }
+
+    fun insert(exercise : Exercise) {
+        exerciseService.insert(exercise);
+    }
 }

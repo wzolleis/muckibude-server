@@ -47,4 +47,14 @@ class ExerciseRepo() {
         }
     }
 
+    fun insert(exercise: Exercise) {
+        return transaction {
+            ExerciseTable.insert {
+                it[id] = exercise.id
+                it[name] = exercise.name
+            }
+        }
+
+    }
+
 }

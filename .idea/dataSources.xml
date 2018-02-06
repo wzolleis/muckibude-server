@@ -11,11 +11,13 @@
         <property name="sslfactory" value="org.postgresql.ssl.NonValidatingFactory" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="postgres@localhost" uuid="57b63789-f9d0-4aad-9038-4eae0551a494">
+    <data-source source="LOCAL" name="postgres localhost" uuid="57b63789-f9d0-4aad-9038-4eae0551a494">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
+      <remarks>lokale Postgres - DB</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/fitness-dev?user=wz&amp;password=</jdbc-url>
     </data-source>
   </component>
 </project>

@@ -7,4 +7,10 @@ class Muskelgruppe() {
         this.name.init()
         return this;
     }
+
+    override fun toString(): String {
+        return "Muskelgruppe(name='$name')"
+    }
+
+
 }

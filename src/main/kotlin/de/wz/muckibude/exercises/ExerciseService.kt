@@ -9,4 +9,8 @@ class ExerciseService(val repo : ExerciseRepo) {
     fun findAll() : Set<Exercise> {
         return repo.findAll()
     }
+
+    fun insert(exercise: Exercise) {
+        repo.insert(exercise)
+    }
 }

@@ -1,7 +1,7 @@
 package de.wz.muckibude
 
-import io.javalin.ApiBuilder.get
-import io.javalin.ApiBuilder.path
+import de.wz.muckibude.exercises.Exercise
+import io.javalin.ApiBuilder.*
 import io.javalin.Javalin
 import org.flywaydb.core.Flyway
 import org.jetbrains.exposed.sql.Database
@@ -23,10 +23,18 @@ class ApplicationInitializer(private val dataSource: DataSource, private val ser
             port(serverPort)
         }.start()
 
+        val exerciseController = AppConfig.Api.exerciseController()
+
         app.routes {
             path("api/exercises") {
-                val exerciseController = AppConfig.Api.exerciseController()
                 get(exerciseController::findAll)
+                post { ctx ->
+                    val body = ctx.body()
+                    println("body = $body")
+                    val exercise = ctx.bodyAsClass(Exercise::class.java)
+                    exerciseController.insert(exercise)
+                    ctx.status(201)
+                }
             }
         }
 
