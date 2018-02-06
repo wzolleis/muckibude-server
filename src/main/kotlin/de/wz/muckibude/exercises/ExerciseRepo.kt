@@ -15,14 +15,19 @@ class ExerciseRepo() {
     object ExcerciseAssembler {
         fun assemble(it: ResultRow): Exercise {
             return exercise {
+                val beschreibungDb : String? = it[ExerciseTable.beschreibung]
+                val muskelgruppeDb : String? = it[ExerciseTable.muskelgruppe]
+                val geraetDb : String? = it[ExerciseTable.geraet]
+
                 name = it[ExerciseTable.name]
                 id = it[ExerciseTable.id]
-                beschreibung = it[ExerciseTable.beschreibung]
+
+                beschreibung = beschreibungDb ?: ""
                 muskelGruppe {
-                    name = it[ExerciseTable.muskelgruppe]
+                    name = muskelgruppeDb ?: ""
                 }
                 geraet {
-                    nummer = it[ExerciseTable.geraet]
+                    nummer = geraetDb ?: ""
                 }
             }
         }
