@@ -36,7 +36,7 @@ class ExerciseRepo() {
 
     fun findAll(): Set<Exercise> {
         return transaction {
-            // DSL/DAO operations go here
+            logger.addLogger(StdOutSqlLogger)
             ExerciseTable.selectAll()
                     .map { ExcerciseAssembler.assemble(it) }
                     .toSet()
@@ -46,7 +46,7 @@ class ExerciseRepo() {
     fun findById(id: String): Exercise {
         return transaction {
             logger.addLogger(StdOutSqlLogger)
-            ExerciseTable.select({ ExerciseTable.id eq id })
+            ExerciseTable.select { ExerciseTable.id eq id }
                     .map { ExcerciseAssembler.assemble(it) }
                     .first()
         }
@@ -54,6 +54,7 @@ class ExerciseRepo() {
 
     fun insert(exercise: Exercise) {
         return transaction {
+            logger.addLogger(StdOutSqlLogger)
             ExerciseTable.insert {
                 it[id] = exercise.id
                 it[name] = exercise.name

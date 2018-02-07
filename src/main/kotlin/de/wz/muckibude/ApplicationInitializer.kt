@@ -20,6 +20,7 @@ class ApplicationInitializer(private val dataSource: DataSource, private val ser
         val app = Javalin.create().apply {
             //enableStaticFiles("/public")
             enableStandardRequestLogging()
+
             port(serverPort)
         }.start()
 
@@ -30,7 +31,6 @@ class ApplicationInitializer(private val dataSource: DataSource, private val ser
                 get(exerciseController::findAll)
                 post { ctx ->
                     val body = ctx.body()
-                    println("body = $body")
                     val exercise = ctx.bodyAsClass(Exercise::class.java)
                     exerciseController.insert(exercise)
                     ctx.status(201)
