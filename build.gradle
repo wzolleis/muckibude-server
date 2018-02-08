@@ -63,4 +63,5 @@ dependencies {
     testCompile 'org.junit.jupiter:junit-jupiter-api:5.0.1'
     testCompile 'org.assertj:assertj-core:3.9.0'
     testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.0.1'
+    testCompile 'io.kotlintest:kotlintest:2.0.7'
 }

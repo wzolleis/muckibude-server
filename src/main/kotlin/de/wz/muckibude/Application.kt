@@ -1,7 +1,7 @@
 package de.wz.muckibude
 
 fun main(args: Array<String>) {
-    val initializer = AppConfig.applicationInitializer()
+    val initializer = AppConfigImpl.applicationInitializer()
     initializer.initDatabase()
     initializer.initAppServer()
 }

@@ -7,8 +7,8 @@ import org.flywaydb.core.Flyway
 import org.jetbrains.exposed.sql.Database
 import javax.sql.DataSource
 
-class ApplicationInitializer(private val dataSource: DataSource, private val serverPort : Int)  {
-    fun initDatabase() {
+class ApplicationInitializerImpl(private val dataSource: DataSource, private val serverPort : Int)  : ApplicationInitializer {
+    override fun initDatabase() {
         val flyway = Flyway()
         flyway.dataSource = dataSource
         flyway.migrate()
@@ -16,7 +16,7 @@ class ApplicationInitializer(private val dataSource: DataSource, private val ser
 
     }
 
-    fun initAppServer() {
+    override fun initAppServer() {
         val app = Javalin.create().apply {
             //enableStaticFiles("/public")
             enableStandardRequestLogging()
@@ -24,7 +24,7 @@ class ApplicationInitializer(private val dataSource: DataSource, private val ser
             port(serverPort)
         }.start()
 
-        val exerciseController = AppConfig.Api.exerciseController()
+        val exerciseController = AppConfigImpl.Api.exerciseController()
 
         app.routes {
             path("api/exercises") {
@@ -40,4 +40,9 @@ class ApplicationInitializer(private val dataSource: DataSource, private val ser
 
     }
 
+}
+
+interface ApplicationInitializer {
+    fun initDatabase()
+    fun initAppServer()
 }
