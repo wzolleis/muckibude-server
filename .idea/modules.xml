@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/muckibude-server.iml" filepath="$PROJECT_DIR$/muckibude-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/checkout-muckibude-server_main.iml" filepath="$PROJECT_DIR$/.idea/modules/checkout-muckibude-server_main.iml" group="muckibude-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/checkout-muckibude-server_test.iml" filepath="$PROJECT_DIR$/.idea/modules/checkout-muckibude-server_test.iml" group="muckibude-server" />
+      <module fileurl="file://$PROJECT_DIR$/muckibude-server.iml" filepath="$PROJECT_DIR$/muckibude-server.iml" group="muckibude-server" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/muckibude-server_main.iml" filepath="$PROJECT_DIR$/.idea/modules/muckibude-server_main.iml" group="muckibude-server" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/muckibude-server_test.iml" filepath="$PROJECT_DIR$/.idea/modules/muckibude-server_test.iml" group="muckibude-server" />
     </modules>

@@ -2,6 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="checkout-muckibude-server_main" target="1.8" />
+      <module name="checkout-muckibude-server_test" target="1.8" />
       <module name="muckibude-server_main" target="1.8" />
       <module name="muckibude-server_test" target="1.8" />
     </bytecodeTargetLevel>
