@@ -28,3 +28,7 @@ datasources/
 
 # intelliJ modules
 *.iml
+
+.gradle/5.0/
+.gradle/buildOutputCleanup/
+.gradle/vcs-1/
